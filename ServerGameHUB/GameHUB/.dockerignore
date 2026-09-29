@@ -1,0 +1,34 @@
+# Dependencies
+**/bin/
+**/obj/
+
+# User secrets and local env files
+.env
+.env.*
+*.user
+*.user.*
+secrets.json
+
+# IDEs and OS files
+.idea/
+.vs/
+.vscode/
+*.swp
+*.swo
+.DS_Store
+
+# Git
+.git/
+.gitignore
+
+# Local databases
+*.db
+*.sqlite
+*.sqlite3
+*.mdf
+*.ldf
+
+# Docker
+docker-compose.yml
+Dockerfile
+.dockerignore

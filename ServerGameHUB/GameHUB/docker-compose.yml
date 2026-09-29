@@ -1,0 +1,22 @@
+version: '3.8'
+
+services:
+  redis:
+    image: redis:alpine
+    container_name: gamehub_redis
+    restart: unless-stopped
+    # No exposed ports to host machine to keep it strictly on internal network
+
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: gamehub_api
+    restart: unless-stopped
+    ports:
+      - "5000:8080" # Maps host port 5000 to standard ASP.NET Core internal port 8080
+    environment:
+      - ConnectionStrings__Redis=redis:6379,abortConnect=false
+      - ASPNETCORE_ENVIRONMENT=Production
+    depends_on:
+      - redis
